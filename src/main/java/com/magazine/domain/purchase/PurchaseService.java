@@ -1,16 +1,15 @@
 package com.magazine.domain.purchase;
 
+import com.magazine.domain.purchase.comparators.QuantityPurchaseComparator;
+import com.magazine.domain.purchase.model.GroupedPurchaseByUser;
 import com.magazine.domain.purchase.model.Purchase;
 import com.magazine.domain.purchase.validators.PurchaseYearValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
-import static com.magazine.domain.purchase.comparators.FullPurchaseComparator.instance;
-import static java.util.stream.Collectors.groupingBy;
+import static com.magazine.domain.purchase.comparators.TotalPurchaseComparator.instance;
 
 @Service
 @RequiredArgsConstructor
@@ -41,14 +40,27 @@ public class PurchaseService {
                 .orElse(null);
     }
 
-    public List<Purchase> loyalCustomers() {
-        final List<Purchase> purchases = purchaseRepository.list();
+    public List<Purchase> loyalCustomers(final Integer maxCustomers) {
+        final List<GroupedPurchaseByUser> purchases = purchaseRepository.listGroupedByCustomer();
 
-        final Map<String, List<Purchase>> purchasesByUser =
-                purchases
+        final List<GroupedPurchaseByUser> sortedByQuantityPurchases = purchases
                 .stream()
-                .collect(groupingBy(Purchase::getDocument));
+                .sorted(new QuantityPurchaseComparator().reversed())
+                .limit(maxCustomers)
+                .toList();
 
-        return null; // TODO
+        sortedByQuantityPurchases.forEach(purchase ->
+            purchase.setPurchases(sortPurchaseByTotal(purchase.getPurchases()))
+        );
+
+        return sortedByQuantityPurchases
+                .stream()
+                .map(purchase -> purchase.getPurchases().stream().findFirst().get())
+                .sorted(instance(false))
+                .toList();
+    }
+
+    private List<Purchase> sortPurchaseByTotal(final List<Purchase> purchases) {
+        return purchases.stream().sorted(instance(false)).toList();
     }
 }

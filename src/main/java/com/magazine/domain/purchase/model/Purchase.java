@@ -21,4 +21,15 @@ public class Purchase {
     public BigDecimal totalPurchase() {
         return quantity.multiply(product.getPrice());
     }
+
+    @Override
+    public String toString() {
+        return "Purchase{" +
+                "personName='" + personName + '\'' +
+                ", document='" + document + '\'' +
+                ", product=" + product +
+                ", quantity=" + quantity +
+                ", total=" + totalPurchase() +
+                '}';
+    }
 }

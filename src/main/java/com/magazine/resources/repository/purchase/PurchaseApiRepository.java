@@ -1,6 +1,7 @@
 package com.magazine.resources.repository.purchase;
 
 import com.magazine.domain.purchase.PurchaseRepository;
+import com.magazine.domain.purchase.model.GroupedPurchaseByUser;
 import com.magazine.domain.purchase.model.Purchase;
 import com.magazine.resources.httpclient.purchase.PurchaseApiClient;
 import com.magazine.resources.httpclient.purchase.dto.PurchaseInfoDto;
@@ -23,6 +24,14 @@ public class PurchaseApiRepository implements PurchaseRepository {
 
         final List<PurchaseInfoDto> purchaseData = client.list();
 
-        return mapper.toDomain(purchaseData);
+        return mapper.toPurchase(purchaseData);
+    }
+
+    @Override
+    public List<GroupedPurchaseByUser> listGroupedByCustomer() {
+
+        final List<PurchaseInfoDto> purchaseData = client.list();
+
+        return mapper.toGroupedPurchaseByUser(purchaseData);
     }
 }

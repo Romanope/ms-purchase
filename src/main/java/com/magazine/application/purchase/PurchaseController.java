@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -46,9 +47,9 @@ public class PurchaseController {
     }
 
     @GetMapping("/loyal-customers")
-    public ResponseEntity<ListRequestResult<PurchaseDto>> loyalCustomers() {
+    public ResponseEntity<ListRequestResult<PurchaseDto>> loyalCustomers(@RequestParam(value = "maxCustomers", required = false, defaultValue = "3") final Integer maxCustomers) {
 
-        final List<Purchase> purchases = purchaseService.loyalCustomers();
+        final List<Purchase> purchases = purchaseService.loyalCustomers(maxCustomers);
 
         final List<PurchaseDto> result = purchases.stream().map(PurchaseMapper::toDto).toList();
 

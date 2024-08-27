@@ -10,4 +10,6 @@ public interface PurchaseRepository {
     List<Purchase> list();
 
     List<GroupedPurchaseByUser> listGroupedByCustomer();
+
+    List<Purchase> listCustomerPurchases(String document);
 }

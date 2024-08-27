@@ -1,5 +1,6 @@
 package com.magazine.application.purchase.dto;
 
+import com.magazine.application.common.dto.ProductDto;
 import lombok.Builder;
 import lombok.Data;
 

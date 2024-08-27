@@ -1,5 +1,6 @@
 package com.magazine.application.purchase.mapper;
 
+import com.magazine.application.common.mapper.ProductMapper;
 import com.magazine.application.purchase.dto.PurchaseDto;
 import com.magazine.domain.purchase.model.Purchase;
 

@@ -63,4 +63,9 @@ public class PurchaseService {
     private List<Purchase> sortPurchaseByTotal(final List<Purchase> purchases) {
         return purchases.stream().sorted(instance(false)).toList();
     }
+
+    public List<Purchase> listCustomerPurchases(final String document) {
+
+        return purchaseRepository.listCustomerPurchases(document);
+    }
 }

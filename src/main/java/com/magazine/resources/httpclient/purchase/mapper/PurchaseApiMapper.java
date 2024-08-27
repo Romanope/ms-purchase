@@ -34,6 +34,11 @@ public class PurchaseApiMapper {
         return purchases;
     }
 
+    public List<Purchase> toPurchase(final PurchaseInfoDto purchaseDto) {
+
+        return new ArrayList<>(toPurchases(purchaseDto));
+    }
+
     public List<Purchase> toPurchase(final List<PurchaseInfoDto> purchasesDto) {
 
         final List<Purchase> purchases = new ArrayList<>();

@@ -1,4 +1,4 @@
-package com.magazine.application.purchase.dto;
+package com.magazine.application.common.dto;
 
 import lombok.Builder;
 import lombok.Data;

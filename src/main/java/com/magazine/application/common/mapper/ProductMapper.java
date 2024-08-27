@@ -1,6 +1,6 @@
-package com.magazine.application.purchase.mapper;
+package com.magazine.application.common.mapper;
 
-import com.magazine.application.purchase.dto.ProductDto;
+import com.magazine.application.common.dto.ProductDto;
 import com.magazine.domain.product.model.Product;
 
 public class ProductMapper {

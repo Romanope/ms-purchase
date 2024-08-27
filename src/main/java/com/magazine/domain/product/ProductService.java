@@ -4,6 +4,7 @@ import com.magazine.domain.product.model.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -23,5 +24,14 @@ public class ProductService {
                 .collect(toMap(Product::getCode, item -> item));
 
         return Optional.ofNullable(products.get(code));
+    }
+
+    public List<Product> findByType(String typeWine) {
+
+        return productRepository
+                .list()
+                .stream()
+                .filter(product -> product.getTypeWine().equals(typeWine))
+                .toList();
     }
 }

@@ -1,0 +1,28 @@
+package com.magazine.resources.repository.purchase;
+
+import com.magazine.domain.purchase.PurchaseRepository;
+import com.magazine.domain.purchase.model.Purchase;
+import com.magazine.resources.httpclient.purchase.PurchaseApiClient;
+import com.magazine.resources.httpclient.purchase.dto.PurchaseInfoDto;
+import com.magazine.resources.httpclient.purchase.mapper.PurchaseApiMapper;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+@RequiredArgsConstructor
+public class PurchaseApiRepository implements PurchaseRepository {
+
+    private final PurchaseApiClient client;
+
+    private final PurchaseApiMapper mapper;
+
+    @Override
+    public List<Purchase> list() {
+
+        final List<PurchaseInfoDto> purchaseData = client.list();
+
+        return mapper.toDomain(purchaseData);
+    }
+}

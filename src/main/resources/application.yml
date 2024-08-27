@@ -1,0 +1,27 @@
+spring.application.name: ecommerce
+
+services:
+  purchase:
+    api:
+      url: https://rgr3viiqdl8sikgv.public.blob.vercel-storage.com
+  product:
+    api:
+      url: https://rgr3viiqdl8sikgv.public.blob.vercel-storage.com
+
+
+#### FEIGN ####
+# Poderia criar interceptador para realizar authenticação e reproveitamento de token.
+# poderia alterar o error decoder padrão, para customizar erros e exceções de acordo com o core business da app.
+# Poderia alterar o http client padrão.
+# Poderia ter usado um abordagem reativa com Spring Web Client.
+feign:
+  client:
+    config:
+      purchaseClient:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+      productClient:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic

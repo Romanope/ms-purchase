@@ -18,3 +18,8 @@
 * Poderia melhorar a performance das operações que utilizam mais de uma chamada de API para processar a solicitação, introduzindo uma abordagem async com CompletableFeature. Iniciaria todas as requisições e aguardaria o resultado.
 * Analisar possibilidade de uso cache distribuído, com TTL curto. Penso que até um cache em memória local poderia ajudar aqui, mas necessário avaliar.
 * Normalmente não utilizo camada de segurança na aplicação, mas sim em Gateway que consome de um Keycloak (ou outra ferramenta de gestão de acessos). Mas se for o caso, poderia pensar em usar spring security com oauth2 ou OIDC.
+* Implementação de teste de integração com rest assured e mock server ou outros frameworkk similares (realmente não tive tempo.)
+* Exemplo de implementação de test de contratos.
+* Poderia implementar TestContainer, é uma boa alternativa para simplificar especialmente os dados mockados.
+* Uso de variáveis de ambiente.
+* Integrar com um gerenciados de Feature Flags para ralizar rollouts seguros de novas features ou mudanças.

@@ -1,6 +1,6 @@
 package com.magazine.domain.purchase.validators;
 
-import com.magazine.domain.common.InvalidDataException;
+import com.magazine.domain.common.exceptions.InvalidDataException;
 
 import java.time.LocalDate;
 

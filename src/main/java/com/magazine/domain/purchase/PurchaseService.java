@@ -55,7 +55,7 @@ public class PurchaseService {
 
         return sortedByQuantityPurchases
                 .stream()
-                .map(purchase -> purchase.getPurchases().stream().findFirst().get())
+                .map(purchase -> purchase.getPurchases().stream().findFirst().get()) // TODO melhorar para não acessar o .get diretamente do Optional
                 .sorted(instance(false))
                 .toList();
     }

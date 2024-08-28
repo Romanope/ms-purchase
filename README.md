@@ -2,33 +2,19 @@
 
 ## O que fiz
 
-* I am using Spring Sleuth project. I would have liked to implement a logs and metrics abstraction layer with OTEL, but I didn't have the time.
-* I am using Spring Boot Web.
-* I am using lombok (using feature to helper in dependency inject by constructor).
+* Projeto construído baseado no Design do DDD. Sempre que posso, utilizo algumas coisas do Clean Arch, como o Use Case. Acredito que é uma boa alternativa à Service. Como aqui são poucas operações, optei pelas Service, mas em projeto real, avaliaria a possibilidade do Use Case como request handler.
+* Contrução de uma API com Spring Boot Web
+* Uso do lombok
+* Uso do spring openfeign client (Poderíamos usar uma abordagem sem bloqueio com o Spring Web Client, se necessário.)
+* Criação de um Exception Handler para centralizar um payload de resposta padrão para os cenário de erros 4xx e 5xx.
+* Criação de testes unitário utilizando mockito para exemplificar (Em um cenário real, exercitar todos os cenários).
 
 ## O que gostaria de ter feito
 
 * Implementar logs de auditoria utilizando programação orienta à aspecto.
+* Utilizar o projeto do Sprint Sleuth para geração de ids transacionais. (TraceId, ParentId, SpanId).
+* Criar uma camada para envio de métrica da aplicação de forma abstrata utilizando uma das implementaçõs do OTEL.
+* Poderia melhorar a performance das operações que utilizam mais de uma chamada de API para processar a solicitação, introduzindo uma abordagem async com CompletableFeature. Iniciaria todas as requisições e aguardaria o resultado.  
 * 
-* 
 
-### Reference Documentation
-For further reference, please consider the following sections:
-
-* [Official Gradle documentation](https://docs.gradle.org)
-* [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/3.3.3/gradle-plugin)
-* [Create an OCI image](https://docs.spring.io/spring-boot/3.3.3/gradle-plugin/packaging-oci-image.html)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/3.3.3/reference/htmlsingle/index.html#web)
-
-### Guides
-The following guides illustrate how to use some features concretely:
-
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
-
-### Additional Links
-These additional references should also help you:
-
-* [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
 

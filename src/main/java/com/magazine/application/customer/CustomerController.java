@@ -38,6 +38,10 @@ public class CustomerController {
 
     @GetMapping("/{document}/purchases")
     public ResponseEntity<ListRequestResult<PurchaseDto>> loyalCustomers(@PathVariable("document") final String document) {
+        // TODO necessário validar o parâmetro Document. Poderia ser feito com spring bean
+        //  validation. Tenho preferência por criar validadores customizados dentro do core business,
+        //  dessa forma é reusável, e mais facilmente testavel com os unitários. Além disso,
+        //  trata-se de uma regra de negócio, então é justo que esteja na camada de core business.
 
         final List<Purchase> purchases = purchaseService.listCustomerPurchases(document);
 

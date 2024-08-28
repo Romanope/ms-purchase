@@ -1,4 +1,4 @@
-package com.magazine.domain.common;
+package com.magazine.domain.common.exceptions;
 
 public class InvalidDataException extends RuntimeException {
 

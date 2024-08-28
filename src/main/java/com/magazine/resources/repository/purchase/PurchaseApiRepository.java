@@ -1,6 +1,6 @@
 package com.magazine.resources.repository.purchase;
 
-import com.magazine.domain.common.CustomerNotFoundException;
+import com.magazine.domain.customer.exceptions.CustomerResourceNotFoundException;
 import com.magazine.domain.purchase.PurchaseRepository;
 import com.magazine.domain.purchase.model.GroupedPurchaseByUser;
 import com.magazine.domain.purchase.model.Purchase;
@@ -43,7 +43,7 @@ public class PurchaseApiRepository implements PurchaseRepository {
                 .stream()
                 .filter(item -> item.getPersonDocument().equals(document))
                 .findFirst()
-                .orElseThrow(() -> new CustomerNotFoundException("The customer has no purchases"));
+                .orElseThrow(() -> new CustomerResourceNotFoundException("The customer has no purchases"));
 
         return mapper.toPurchase(purchaseData);
     }

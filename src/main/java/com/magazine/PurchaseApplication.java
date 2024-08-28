@@ -6,10 +6,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients(basePackages = {"com.magazine.resources.httpclient"})
-public class EcommerceApplication {
+public class PurchaseApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EcommerceApplication.class, args);
+		SpringApplication.run(PurchaseApplication.class, args);
 	}
 
 }

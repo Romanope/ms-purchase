@@ -19,7 +19,7 @@ import static java.lang.Boolean.TRUE;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/v1//purchases")
+@RequestMapping("/v1/purchases")
 public class PurchaseController {
 
     private final PurchaseService purchaseService;

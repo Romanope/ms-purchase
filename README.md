@@ -23,3 +23,5 @@
 * Poderia implementar TestContainer, é uma boa alternativa para simplificar especialmente os dados mockados.
 * Uso de variáveis de ambiente.
 * Integrar com um gerenciados de Feature Flags para ralizar rollouts seguros de novas features ou mudanças.
+* Poderia integrar o repositório com uma esteira de deploy, Jenkings, Spinnaker, Github ACtions etc.
+* Poderia ter criado algumas actions no repositório para fazer build e execução dos testes ao abrir PRs.
